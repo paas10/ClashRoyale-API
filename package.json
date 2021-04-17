@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Backend en NodeJS para el sitio Web ClashRoyale",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "start": "nodemon index.js"
   },
@@ -19,9 +18,11 @@
   },
   "homepage": "https://github.com/paas10/ClashRoyale-API#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mongoose": "^5.12.3"
   },
   "devDependencies": {
+    "dotenv": "^8.2.0",
     "nodemon": "^2.0.7"
   }
 }
