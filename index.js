@@ -19,3 +19,5 @@ app.use(express.json());
 app.use("/api/v1/clashroyale/cards", cardsRoutes);
 
 app.listen(PORT, () => console.log(`Server running on port: http://localhost:${PORT}`));
+
+module.exports = app;

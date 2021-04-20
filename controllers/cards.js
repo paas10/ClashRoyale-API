@@ -38,6 +38,7 @@ CardController = {
         res.status(201).json({
           status: true,
           message: "Carta ingresada correctamente",
+          cartaID: newCard._id
         });
       } catch (err) {
         // 400: Error Data Fail
