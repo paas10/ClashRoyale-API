@@ -30,3 +30,20 @@ Ejemplo de JSON a ingresar enviado por Raw (body)
 
 ### DELETE
 Eliminación de una carta a través de su ID http://localhost:3001/api/v1/clashroyale/cards/2
+
+
+# DOCKER COMMANDS
+1. Se crea la imagen del Frontend:
+```bash
+docker build -t frontend:dev .
+```
+
+2. Se crea la imagen del Backend:
+```bash
+docker build -t backend:dev .
+```
+
+3. Se crea el contenedor con el siguiente comando, el cuál crea el contender a partirl del archivo docker-compose.yml
+```bash
+docker-compose up -d --build
+```
