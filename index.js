@@ -15,6 +15,12 @@ db.once('open', () => console.log('Connected to Database'));
 const app = express();
 const PORT = 3001;
 
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept,access-token");
+    next();
+});
+
 app.use(express.json());
 
 app.use("/api/v1/clashroyale/cards", cardsRoutes);
