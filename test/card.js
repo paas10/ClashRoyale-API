@@ -42,7 +42,6 @@ describe('Cards API', () => {
           response.should.have.status(200);
           response.body.should.be.a('object');
           response.body.should.have.property('_id');
-          response.body.should.have.property('id');
           response.body.should.have.property('img');
           response.body.should.have.property('nombre');
           response.body.should.have.property('calidad');
@@ -79,7 +78,6 @@ describe('Cards API', () => {
   describe ('POST /api/v1/clashroyale/cards/new', () => {
     it("It should POST a new Card", (done) => {
       const card = {
-        "id": 10,
         "img": "",
         "nombre": "Leñador",
         "calidad": "Legendaria",
@@ -101,7 +99,6 @@ describe('Cards API', () => {
 
     it("It should NOT POST a new Card. (nombre is a required property)", (done) => {
       const badCart = {
-        "id": 10,
         "img": "",
         "calidad": "Legendaria",
         "tipoCarta": "Tropa",
@@ -123,7 +120,6 @@ describe('Cards API', () => {
   describe ('PATCH /api/v1/clashroyale/cards/:id', () => {
 
     const cardUpdated = {
-      "id": 11,
       "img": "",
       "nombre": "LEÑADOR",
       "calidad": "Legendaria",
