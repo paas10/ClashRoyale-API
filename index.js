@@ -1,12 +1,13 @@
 
 const express = require("express");
 const mongoose = require("mongoose");
+const mongoConf = require("./config/mongo.conf");
 
 const cardsRoutes = require("./routes/cards.js");
 
 
 // mongoose.connect("mongodb://localhost/ClashRoyale", { useNewUrlParser: true, useUnifiedTopology: true });
-mongoose.connect("mongodb+srv://apiClashRoyale:43lGaOAWJXKrW7iG@prograweb.bdnkb.mongodb.net/test", { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(mongoConf.conn, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 db.on('error', (error) => console.error(error));
 db.once('open', () => console.log('Connected to Database'));
