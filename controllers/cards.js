@@ -30,7 +30,7 @@ CardController = {
   },
   
   createCard: async (req, res) => {
-    if (req.body.id) {
+    if (req.body) {
       const card = new Card(req.body);
 
       try {
