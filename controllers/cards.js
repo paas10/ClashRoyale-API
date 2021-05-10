@@ -118,6 +118,10 @@ CardController = {
       card = await Card.findById(req.params.id);
       if (card) {
         card.remove();
+
+        // Limpio la caché para recuperar los datos reales
+        redisClient.del('cartas');
+
         res.status(204).json({
           status: true,
           message: "Carta eliminada correctamente",
