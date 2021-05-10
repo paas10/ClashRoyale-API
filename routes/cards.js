@@ -4,7 +4,7 @@ const CardController = require('../controllers/cards.js');
 const router = express.Router();
 
 // Returns all de cards
-router.get("/", CardController.getCards);
+router.get("/", CardController.cache, CardController.getCards);
 
 // Return the cards by id
 router.get("/:id", CardController.getCardByID);

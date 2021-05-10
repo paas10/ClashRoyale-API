@@ -1,14 +1,36 @@
+const redis = require('redis');
+const REDIS_PORT = 6379;
+const redisClient = redis.createClient(REDIS_PORT);
 
 const Card = require('../models/card');
 
 CardController = {
   getCards: async (req, res) => {
     try {
-      const cards = await Card.find()
-      res.status(200).send(cards);
+      console.log('Recuperando Data...')
+      setTimeout(async () => {
+        const cards = await Card.find()
+        
+        // Set data to redis
+        redisClient.setex('cartas', 3600, JSON.stringify(cards));
+        
+        res.status(200).send(cards);
+      }, 5000);
     } catch (err) {
       res.status(500).json({ message: err.message });
     }
+  },
+
+  cache: async (req, res, next) => {
+    redisClient.get('cartas', (err, data) => {
+      if(err) throw err;
+  
+      if(data != null) {
+        res.send(data)
+      } else {
+        next();
+      }
+    })
   },
   
   getCardByID: async (req, res) => {
@@ -35,6 +57,7 @@ CardController = {
 
       try {
         const newCard = await card.save();
+        redisClient.del('cartas');
         res.status(201).json({
           status: true,
           message: "Carta ingresada correctamente",
@@ -69,6 +92,9 @@ CardController = {
 
         await card.save();
 
+        // Limpio la caché para recuperar los datos reales
+        redisClient.del('cartas');
+        
         res.status(204).json({
           status: true,
           message: "Carta actualizada correctamente",
