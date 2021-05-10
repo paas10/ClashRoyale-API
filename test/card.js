@@ -42,7 +42,6 @@ describe('Cards API', () => {
           response.should.have.status(200);
           response.body.should.be.a('object');
           response.body.should.have.property('_id');
-          response.body.should.have.property('id');
           response.body.should.have.property('img');
           response.body.should.have.property('nombre');
           response.body.should.have.property('calidad');
