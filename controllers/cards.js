@@ -1,6 +1,10 @@
 const redis = require('redis');
 const REDIS_PORT = 6379;
-const redisClient = redis.createClient(REDIS_PORT);
+const redisClient = redis.createClient({
+  port: REDIS_PORT,
+  host: 'redis'
+});
+
 
 const Card = require('../models/card');
 
@@ -57,7 +61,10 @@ CardController = {
 
       try {
         const newCard = await card.save();
+
+        // Limpio la caché para recuperar los datos reales
         redisClient.del('cartas');
+
         res.status(201).json({
           status: true,
           message: "Carta ingresada correctamente",
