@@ -40,7 +40,7 @@ docker build -t frontend:dev .
 
 2. Se crea la imagen del Backend:
 ```bash
-docker build -t backend:dev .
+docker build -t clashroyale-backend:latest .
 ```
 
 3. Se crea el contenedor con el siguiente comando, el cuál crea el contender a partirl del archivo docker-compose.yml

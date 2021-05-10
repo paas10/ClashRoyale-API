@@ -2,7 +2,7 @@ const redis = require('redis');
 const REDIS_PORT = 6379;
 const redisClient = redis.createClient({
   port: REDIS_PORT,
-  host: 'redis'
+  host: 'localhost'
 });
 
 

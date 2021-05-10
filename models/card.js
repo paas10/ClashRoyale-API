@@ -27,7 +27,7 @@ const cardSchema = new mongoose.Schema({
   },
   velocidad: {
     type: String,
-    required: true
+    required: false
   }
 })
 
